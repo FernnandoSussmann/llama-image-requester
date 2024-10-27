@@ -58,8 +58,8 @@ EXCEPTION: Query failed due missing access on column salary.
 The query `SELECT * FROM CLIENTS` is valid and will retrieve all columns from the `CLIENTS` table. However, if you are experiencing an error saying "missing access on column salary," it means that your user account does not have permission to access the `salary` column in the `CLIENTS` table.
 
 To resolve this issue, you should either grant your user account permissions to access the `salary` column or you can modify the query to only retrieve the columns that you are authorized to access. For example, if you only need to retrieve the `client_id` and `name` columns from the `CLIENTS` table, you could use a modified version of the query like this:
-```sql
+\`\`\`sql
 SELECT client_id, name FROM CLIENTS;
-```
+\`\`\`
 This will allow your user account to access only those columns that are explicitly specified in the query.
 ```

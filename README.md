@@ -80,3 +80,9 @@ Just run `run.sh` script passing application parameters as you would do in local
 ./run.sh --file_path ./sql_image_example.png --llm_endpoint http://ollama:11434
 ```
 If you haven't built this project image yet this script will build and run it.
+
+#### Interactive mode
+Also you can use `interactive_mode.sh` to use this application in interactive mode. It is designed to make it easier to run this project if someone does not know those tecnologies to well. I may be improved but already guide you by most of the steps.
+```sh
+./interactive_mode.sh
+``` 

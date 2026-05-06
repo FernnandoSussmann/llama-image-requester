@@ -2,7 +2,8 @@
 I created this script because often I receive a query as an image instead text. It would help me alot to extract the text from the image and send it to an LLM to pre-analyse it. This is not a robust project just an intresting script.
 
 # How to run
-## Setup
+## Locally
+### Setup
 To run this project you must have:
 - Python 3.10 or higher
 - [Ollama](https://ollama.com) installed or an IA sever with llama models running in it
@@ -11,10 +12,10 @@ To run this project you must have:
 
 This was developed using a local ollama server so if you use a different IA server the request part of the could probably need to change. If you are running it locally you must download `codellama` model `ollama pull codellama` and serve it running `ollama serve`. 
 
-## Running
+### Running
 You can simply call this script using command line. For more information about it's parameters you can use the `--help` flag:
 ```sh
-$ python llama_image_resquester.py --help
+$ uv run python llama_image_resquester.py --help
 --help
 usage: Llama text query requester [-h] [--file_path [FILE_PATH]] [--llm_endpoint [LLM_ENDPOINT]] [--prompt [PROMPT]]
                                   [--pytesseract_instalation_path [PYTESSERACT_INSTALATION_PATH]]
@@ -33,10 +34,10 @@ options:
 ```
 
 
-## Examples
+### Examples
 With default values
 ```sh
-python llama_image_resquester.py --file_path sql_image_example.png --llm_endpoint http://localhost:11434
+uv run python llama_image_resquester.py --file_path sql_image_example.png --llm_endpoint http://localhost:11434
 SELECT * FROM CLIENTS
 
 EXCEPTION: Query failed due missing access on column salary.
@@ -63,3 +64,25 @@ SELECT client_id, name FROM CLIENTS;
 \`\`\`
 This will allow your user account to access only those columns that are explicitly specified in the query.
 ```
+
+## Docker
+### Setup
+You must have docker installed in your machine. Checkout (https://docs.docker.com/engine/install/). After this run `docker_setup.sh` for setting up ollama image. This script only do two things. It first creates ollama container and pulls codellama model afterwards. If you wish to use another model you can run the following command replacing `MODEL_NAME` for the name of the model you wish to use:
+```sh
+MODEL_NAME=qwen3.5:9b
+docker exec ollama ollama pull $MODEL_NAME 
+```
+
+### Running
+Just run `run.sh` script passing application parameters as you would do in local execution. Example:
+```sh
+# Note endpoint is ollama because it's ollama containers name. If you changed it to any other then you have to change in llm_endpoint flag also
+./run.sh --file_path ./sql_image_example.png --llm_endpoint http://ollama:11434
+```
+If you haven't built this project image yet this script will build and run it.
+
+#### Interactive mode
+Also you can use `interactive_mode.sh` to use this application in interactive mode. It is designed to make it easier to run this project if someone does not know those tecnologies to well. I may be improved but already guide you by most of the steps.
+```sh
+./interactive_mode.sh
+``` 

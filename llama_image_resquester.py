@@ -47,4 +47,5 @@ payload = {
     "stream": False,
 }
 res = requests.post(f"{llm_endpoint}/api/generate", json=payload)
+print("response:")
 print(res.json()["response"])

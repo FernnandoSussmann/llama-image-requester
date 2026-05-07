@@ -1,6 +1,7 @@
 # llama-image-requester
 I created this script because often I receive a query as an image instead text. It would help me alot to extract the text from the image and send it to an LLM to pre-analyse it. This is not a robust project just an intresting script.
 
+Note: Repo was migrated to [Codeberg](https://codeberg.org/FernnandoSussmann/llama-image-requester)
 # How to run
 ## Locally
 ### Setup
